@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <div class="header-top">
+      <h1>ADMINISTRATOR</h1>
+      <ul>
+        <li id="logout"><a>로그아웃</a></li>
+      </ul>
+    </div>
+
+    <div class="gnb">
+      <nav>
+        <ul>
+          <li class="dep01"><a href="admin-member.html">회원정보</a></li>
+          <li class="dep01"><a href="admin-learningSet.html">학습세트</a></li>
+          <li class="dep01"><a href="admin-learningInfo.html" class="current">학습정보</a></li>
+          <li class="dep01"><a href="admin-learningResult.html">학습결과</a></li>
+          <li class="dep01"><a href="admin-quiz.html">퀴즈데이터</a></li>
+          <li class="dep01"><a href="admin-memo.html">메모</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+
+    <div class="contents">
+
+      <div class="contents-top">
+        <h2>학습정보</h2>
+
+        <div class="file">
+          <input type="file" id="fileUpload" class="form-file">
+          <span class="file-name">선택된 파일 없음</span>
+          <label for="fileUpload" class="btn btn-file">파일첨부</label>
+        </div>
+
+        <div class="search">
+          <div class="form form-search">
+            <select id="findSelect" name="" class="form-select">
+              <option value="name">성명</option>
+              <option value="id">회원아이디</option>
+              <option value="type">권한</option>
+              <option value="email">E-Mail</option>
+              <option value="hp">휴대전화번호</option>1
+              <option value="publishedDate">가입일시</option>
+              <option value="ip">IP</option>
+            </select>
+            <input id="findText" type="text" class="form-input" placeholder="검색어를 입력하세요." title="검색어 입력" style="padding: 5px; margin: 0; border: 1px solid #c9c9c9; border-radius: 0; font-size: 1.3rem; line-height: 1; background-color: transparent; -webkit-box-sizing: border-box; box-sizing: border-box; vertical-align: middle; width: 300px; height: 33px;">
+            <button id="findBtn" type="button" class="btn btn-primary">검색</button>
+            <button id="findClear" type="button" class="btn btn-primary">초기화</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="contents-area">
+        <div class="table">
+          <table class="tb full">
+            <thead>
+            <tr>
+              <th>학습날짜</th>
+              <th>학습시간</th>
+              <th>회원아이디</th>
+              <th>선생님이미지링크</th>
+              <th>학습문구</th>
+              <th>학습데이터</th>
+              <th>등록날짜</th>
+              <th>관리</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>2022-12-04</td>
+              <td>02:00</td>
+              <td>test1</td>
+              <td>링크</td>
+              <td>문구</td>
+              <td>데이터</td>
+              <td>2022-12-04</td>
+              <td>
+                <a href="admin-learningInfo-edit.html" class="btn btn-primary">수정</a>
+                <a href="javascript: void(0);" class="btn btn-cancel">삭제</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="btn-wrap ct">
+          <button type="button" id="prev" class="btn btn-arrow prev">이전</button>
+          <span id="pageNav" class="page-nav">1/1</span>
+          <button type="button" id="next" class="btn btn-arrow next">다음</button>
+        </div>
+
+        <!-- <div class="btn-wrap">
+          <button type="button" class="btn btn-secondary">선택수정</button>
+          <button type="button" class="btn btn-secondary">선택삭제</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

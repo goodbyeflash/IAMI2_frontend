@@ -1,0 +1,393 @@
+@charset "UTF-8";
+
+@import "mixin.scss";
+
+input[type='text'], input[type='password'], select, button {
+  padding: 5px;
+  margin: 0;
+  border: 1px solid #c9c9c9;
+  border-radius: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+  background-color: transparent;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+input[type='checkbox'] {
+  margin: 0;
+}
+
+.color-red {color: red;}
+
+header {
+  width: 100%;
+  background-color: #222;
+
+  .header-top {
+    position: relative;
+    padding: 15px;
+    color: #fff;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    ul {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+
+      li {
+        float: left;
+        margin-left: 10px;
+
+        a {
+          font-size: 1.3rem;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .gnb {
+    nav {
+      ul {
+        .dep01 {
+          display: inline-block;
+          float: left;
+          min-width: 150px;
+          margin-right: 4px;
+
+          a {
+            display: block;
+            padding: 10px 15px;
+            font-size: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: #999;
+            background-color: #464646;
+
+            &.current, &.active {
+              color: #000;
+              font-weight: 900;
+              background-color: #fff;
+            }
+          }
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+      }
+    }
+  }
+}
+
+.contents {
+  padding: 100px 30px 200px;
+
+  h2 {
+    padding: 15px 0;
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+
+  h3 {
+    padding: 40px 0 10px;
+    font-size: 2rem;
+    font-weight: 900
+  }
+
+  h4 {
+    padding: 10px 0;
+    font-weight: 900;
+  }
+
+  &-section {
+    margin-top: 30px;
+  }
+
+  &-top {
+    .search {
+      margin-top: 10px;
+    }
+
+    .file {
+      text-align: right;
+
+      input[type="file"] {display: none;}
+      label {
+        font-size: 13px;
+        vertical-align: middle;
+      }
+
+      &-name {
+        display: inline-block;
+        padding: 9px;
+        margin-right: -6px;
+        width: 300px;
+        text-align: left;
+        font-size: 13px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        vertical-align: middle;
+        border: 1px solid #0076be;
+        color: #0076be;
+      }
+    }
+  }
+}
+
+.form {
+  &-select {
+
+  }
+
+  &-input {
+
+  }
+
+  &-search {
+    text-align: right;
+
+    input[type='text'], select, button {
+      height: 33px;
+    }
+
+    .form-input {
+      width: 300px;
+    }
+  }
+
+  &-group {
+    &.inline {
+      display: inline-block;
+    }
+  }
+
+  &-date {
+    display: inline-block;
+
+    .datePicker {
+      width: 125px;
+      height: 33px;
+    }
+
+    .ui-datepicker-trigger {
+      margin-left: -1px;
+      width: 33px;
+      height: 33px;
+      border-color: #c9c9c9;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .date-dashed {padding: 0 5px;}
+  }
+
+  &-message {
+    padding: 10px 0;
+    min-height: 18px;
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    &.rt {text-align: right;}
+
+    &.alert {
+      color: #ff3b12;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 0;
+  text-decoration: none;
+
+  &-primary {
+    background-color: #00007e;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  &-secondary {
+    background-color: #c9c9c9;
+  }
+
+  &-excel {
+    background-color: #185c37;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  &-file {
+    background-color: #0076be;
+    color: #fff;
+  }
+
+  &-cancel {
+    background-color: #838383;
+    color: #fff;
+  }
+
+  &-arrow {
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    text-indent: -9999px;
+    border: 1px solid #c9c9c9;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 7px 11px;
+    cursor: pointer;
+
+    &.prev {
+      background-image: url('../images/left-arrow.png');
+    }
+    &.next {
+      background-image: url('../images/right-arrow.png');
+    }
+
+  }
+
+  &-wrap {
+    padding: 20px 0;
+
+    &.rt {
+      text-align: right;
+    }
+
+    &.ct {
+      text-align: center;
+    }
+
+    .page-nav {
+      padding: 0 20px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.search {
+  padding: 20px 0;
+}
+
+.table {
+
+  table, th, td {
+    padding: 7px 10px;
+    border: 1px solid #e1e1e1;
+    border-collapse: collapse;
+    font-size: 1.4rem;
+    text-align: center;
+    vertical-align: middle;
+
+    &.lt {
+      text-align: left;
+    }
+  }
+
+  th {
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #eee;
+  }
+
+  .full {
+    width: 100%;
+  }
+
+  .tb {
+    &-check {
+      width: 50px;
+    }
+
+    &-form {
+      text-align: left;
+
+      input[type="text"], input[type="password"] {
+        min-width: 300px;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
+}
+
+.graph {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-left: 20px;
+
+  &-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  &-img {
+    width: 300px;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.type {
+  display: flex;
+  flex-wrap: nowrap;
+
+  &[data-length="10"] {
+    .type-select {
+      width: 10%;
+    }
+  }
+
+  &[data-length="7"] {
+    .type-select {
+      width: 14.4%;
+    }
+  }
+
+  &-select {
+    margin-left: -1px;
+    width: 12.5%;
+
+    &:first-child {margin-left: 0;}
+
+    input {display: none;}
+
+    input:checked +  label {background-color: #e9e9e9;}
+
+    label {
+      display: inline-block;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.4rem;
+      border: 1px solid #c9c9c9;
+      background-color: #fff;
+    }
+
+    select {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #c9c9c9;
+    }
+  }
+}

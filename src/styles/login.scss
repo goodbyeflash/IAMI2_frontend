@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+input[type='text'], input[type='password'], select, button {
+  padding: 5px;
+  margin: 0;
+  border: 1px solid #c9c9c9;
+  border-radius: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+  background-color: transparent;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 3px;
+
+  &-primary {
+    background-color: #00007e;
+    color: #fff;
+  }
+
+  &-secondary {
+    background-color: #c9c9c9;
+  }
+
+  &-wrap {
+    margin-top: 25px;
+    text-align: center;
+  }
+}
+
+.login {
+  width: 100vw;
+  height: 100vh;
+
+  &-form {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    border: 1px solid #444;
+    transform: translate(-50%, -50%);
+
+    h1 {
+      padding: 10px 0;
+      font-size: 2.3rem;
+      text-align: center;
+      background-color: #444;
+      color: #fff;
+    }
+
+    .form {
+      padding: 50px 30px;
+      
+      &::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      label, input {
+        display: inline-block;
+        font-size: 1.5rem;
+        vertical-align: middle;
+      }
+
+      label {
+        width: 20%;
+        text-align: center;
+      }
+
+      input {
+        width: 78%
+      }
+
+      &-group {
+        margin-bottom: 20px;
+      }
+
+      &-message {
+        min-height: 18px;
+        font-size: 1.4rem;
+        font-weight: bold;
+
+        &.rt {text-align: right;}
+
+        &.alert {
+          color: #ff3b12;
+        }
+      }
+    }
+  }
+}

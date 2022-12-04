@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+@import "mixin.scss";
+
+$body-color: red;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 1.6rem;
+  box-sizing: border-box;  
+}
+
+.inner {
+  width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+select,
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  padding: 5px 8px;
+  border: 1px solid #eee;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: 0;
+
+  &-primary {
+    background-color: #00007e;
+    color: #fff;
+  }
+
+  &-secondary {
+    background-color: #c9c9c9;
+  }
+
+  &-excel {
+    background-color: #185c37;
+    color: #fff;
+  }
+
+  &-ok {
+    color: #fff;
+    background-color: #00007e;
+  }
+
+  &-cancel {
+    background-color: #838383;
+  }
+
+  &-wrap {
+    padding: 20px 0;
+
+    &.rt {
+      text-align: right;
+    }
+
+    &.ct {
+      text-align: center;
+    }
+  }
+}
+
+.terms {
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &-area {
+    border: 1px solid #eee;
+    padding: 10px;
+    min-height: 150px;
+    overflow: auto;
+    font-size: 1.3rem;
+  }
+
+  &-check {
+    margin-top: 5px;
+    text-align: right;
+
+    label {
+      position: relative;
+      padding-left: 27px;
+      font-size: 1.3rem;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        box-sizing: border-box;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        display: block;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #eee;
+      }
+
+      &::after {
+        display: none;
+        left: 3px;
+        width: 9px;
+        height: 9px;
+        background-color: #ff3b12;
+      }
+    }
+  }
+
+  input {
+    &:checked {
+      + label {
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.form {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 5px 10px;
+      font-size: 1.3rem;
+      border: 1px solid #eee;
+      border-collapse: collapse;
+    }
+
+    th {
+      background-color: #f8f8f8;
+    }
+
+    td {
+      line-height: 3.5rem;
+    }
+  }
+
+  &-item {
+    &.radio {
+      position: relative;
+
+      label {
+        display: block;
+        padding-left: 27px;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          border-radius: 50%;
+          box-sizing: border-box;
+          transform: translateY(-50%);
+        }
+
+        &::before {
+          display: block;
+          left: 0;
+          width: 15px;
+          height: 15px;
+          border: 1px solid #eee;
+        }
+
+        &::after {
+          display: none;
+          left: 4px;
+          width: 7px;
+          height: 7px;
+          background-color: #ff3b12;
+        }
+      }
+
+      input {
+        &:checked {
+          + label {
+            &::after {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-group {
+    display: flex;
+    flex-wrap: nowrap;
+
+    .form-item {
+      margin-right: 4px;
+
+      &.radio {
+        margin-right: 20px;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-btn {
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  .required {
+    display: block;
+    position: relative;
+    padding-right: 5px;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 3px;
+      right: 0;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: #ff3b12;
+    }
+  }
+
+  &-message {
+    padding: 10px 0;
+    min-height: 18px;
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    &.rt {text-align: right;}
+
+    &.alert {
+      color: #ff3b12;
+    }
+  }
+}
+
+@include mobile {
+  .inner {
+    width: 100%;
+  }
+
+  .form {
+    &-group {
+      flex-wrap: wrap;
+    }
+  }
+}

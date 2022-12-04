@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <div class="header-top">
+      <h1>ADMINISTRATOR</h1>
+      <ul>
+        <li id="logout"><a>로그아웃</a></li>
+      </ul>
+    </div>
+
+    <div class="gnb">
+      <nav>
+        <ul>
+          <li class="dep01"><a href="admin-member.html" class="current">회원정보</a></li>
+          <li class="dep01"><a href="admin-learningSet.html">학습세트</a></li>
+          <li class="dep01"><a href="admin-learningInfo.html">학습정보</a></li>
+          <li class="dep01"><a href="admin-learningResult.html">학습결과</a></li>
+          <li class="dep01"><a href="admin-quiz.html">퀴즈데이터</a></li>
+          <li class="dep01"><a href="admin-memo.html">메모</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="contents">
+      <div class="contents-top">
+        <h2>회원 정보 수정</h2>
+      </div>
+
+      <div class="contents-area">
+        <div class="table">
+          <table class="tb full">
+            <colgroup>
+              <col style="width: 10%">
+              <col style="width: 40%">
+              <col style="width: 10%">
+              <col style="width: 40%">
+            </colgroup>
+            <tbody>
+            <tr>
+              <th>아이디</th>
+              <td>
+                <div class="tb-form">
+                  <div id="id">test1</div>
+                </div>
+              </td>
+              <th>이름</th>
+              <td>
+                <div class="tb-form">
+                  <input id="name" type="text" maxlength="10" value="차상빈">
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>등록날짜</th>
+              <td colspan="3">
+                <div class="tb-form">
+                  <input id="date" type="text" maxlength="10" value="2022-12-04">
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <div id="message" class="form-message alert rt"></div>
+          <div class="btn-wrap rt">
+            <button id="updateBtn" class="btn btn-primary">수정</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

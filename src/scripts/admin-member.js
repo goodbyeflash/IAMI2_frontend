@@ -1,5 +1,7 @@
 import '../styles/reset.scss';
 import '../styles/admin.scss';
+import '../styles/layer.scss';
+import * as XLSX from 'xlsx';
 import api from './lib/api';
 
 let pageCount = 1;
@@ -7,17 +9,10 @@ let lastPageNum = 0;
 let type = 'all';
 let data = {};
 let teacherItems;
-let columns = [
-  { header: '아이디', key: 'id', width: 25 },
-  { header: '성명', key: 'name', width: 25 },
-  { header: '휴대폰', key: 'hp', width: 25 },
-  { header: '권한', key: 'type', width: 25 },
-  { header: '가입일', key: 'publishedDate', width: 30 },
-];
+const loadingPopup = document.getElementsByClassName('loading-popup')[0];
 
 window.onload = () => {
   api('get', 'teachers/check', undefined, (res) => {
-    console.log(res);
     if (res) {
       if (res.msg && res.msg == 'ERROR') {
         location.href = 'admin.html';
@@ -61,6 +56,10 @@ window.onload = () => {
         data = {};
         type == 'all';
         onloadUserTable();
+      };
+
+      document.getElementById('fileUpload').onchange = (e) => {
+        readExcel(e);
       };
 
       document.getElementsByTagName('body')[0].style.display = 'block';
@@ -107,7 +106,9 @@ function onloadUserTable() {
                 <span href="admin-member-edit.html" id="update_${index}" data-val="${
             item._id
           }" class="btn btn-primary">수정</span>
-                <span href="javascript: void(0);" class="btn btn-cancel">삭제</span>
+                <span href="javascript: void(0);" id="delete_${index}" data-val="${
+            item._id
+          }" class="btn btn-cancel">삭제</span>
             </td>
             </tr>`;
         });
@@ -119,6 +120,27 @@ function onloadUserTable() {
             )}`;
           };
         }
+
+        for (let index = 0; index < teacherItems.length; index++) {
+          document.getElementById(`delete_${index}`).onclick = (e) => {
+            if (window.confirm('정말 삭제 하시겠습니까?')) {
+              api(
+                'delete',
+                `users/${e.target.getAttribute('data-val')}`,
+                undefined,
+                (res) => {
+                  if (res.msg && res.msg == 'ERROR') {
+                    alert('오류가 발생하였습니다.');
+                    return;
+                  } else {
+                    onloadUserTable();
+                  }
+                }
+              );
+            }
+          };
+        }
+
         document.getElementById(
           'pageNav'
         ).innerText = `${pageCount}/${lastPageNum}`;
@@ -128,6 +150,44 @@ function onloadUserTable() {
       }
     }
   });
+}
+
+function readExcel(event) {
+  let input = event.target;
+  let reader = new FileReader();
+  reader.onload = function () {
+    let data = reader.result;
+    let workBook = XLSX.read(data, { type: 'binary' });
+    workBook.SheetNames.forEach(function (sheetName) {
+      let rows = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName]);
+      if (rows) {
+        try {
+          loadingPopup.style.display = 'block';
+          rows.forEach((row, index) => {
+            api(
+              'post',
+              `users/register`,
+              {
+                id: row.id,
+                password: row.password,
+                name: row.name,
+                publishedDate: new Date(),
+              },
+              (res) => {
+                if (res.msg == 'OK' && index + 1 == rows.length) {
+                  onloadUserTable();
+                  loadingPopup.style.display = 'none';
+                }
+              }
+            );
+          });
+        } catch (error) {
+          alert('오류가 발생하였습니다.');
+        }
+      }
+    });
+  };
+  reader.readAsBinaryString(input.files[0]);
 }
 
 function pad(number, length) {

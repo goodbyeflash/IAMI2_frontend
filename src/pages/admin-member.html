@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>관리자 페이지</title>
   </head>
-  <body>
+  <body style="display: none;">
     <div id="wrap">
       <header>
         <div class="header-top">
@@ -42,16 +42,15 @@
 
             <div class="file">
               <input type="file" id="fileUpload" class="form-file" />
-              <span class="file-name">선택된 파일 없음</span>
-              <label for="fileUpload" class="btn btn-file">파일첨부</label>
+              <!-- <span class="file-name">선택된 파일 없음</span> -->
+              <label for="fileUpload" class="btn btn-file">파일업로드</label>
             </div>
 
             <div class="search">
               <div class="form form-search">
                 <select id="findSelect" name="" class="form-select">
                   <option value="name">이름</option>
-                  <option value="id">회원아이디</option>
-                  <option value="publishedDate">등록날짜</option>
+                  <option value="id">아이디</option>
                 </select>
                 <input
                   id="findText"
@@ -72,7 +71,7 @@
                     vertical-align: middle;
                     width: 300px;
                     height: 33px;
-                  "
+                  "                  
                 />
                 <button id="findBtn" type="button" class="btn btn-primary">
                   검색
@@ -124,6 +123,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="loading-popup">
+        <div class="dim"></div>
+        <div class="loading"></div>
       </div>
     </div>
   </body>

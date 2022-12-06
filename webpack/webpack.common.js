@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const htmlPageNames = ['main', 'admin-member', 'admin-member-edit', 'admin-learningSet', 'admin-learningSet-edit', 'admin-learningInfo', 'admin-learningInfo-edit', 'admin-learningResult', 'admin-quiz', 'admin-quiz-edit', 'admin-memo'];
+const htmlPageNames = ['main', 'admin', 'admin-member', 'admin-member-edit', 'admin-learningSet', 'admin-learningSet-edit', 'admin-learningInfo', 'admin-learningInfo-edit', 'admin-learningResult', 'admin-quiz', 'admin-quiz-edit', 'admin-memo'];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -16,6 +16,7 @@ const multipleHtmlPlugins = htmlPageNames.map((name) => {
 module.exports = {
   entry: {
     main: Path.resolve(__dirname, '../src/scripts/index.js'),
+    'admin' : Path.resolve(__dirname, '../src/scripts/admin.js'),
     'admin-member' : Path.resolve(__dirname, '../src/scripts/admin-member.js'),
     'admin-member-edit' : Path.resolve(__dirname, '../src/scripts/admin-member-edit.js'),
     'admin-learningSet' : Path.resolve(__dirname, '../src/scripts/admin-learningSet.js'),

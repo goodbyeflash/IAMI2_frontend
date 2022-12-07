@@ -145,7 +145,6 @@ function onloadUserTable() {
           'pageNav'
         ).innerText = `${pageCount}/${lastPageNum}`;
       } else {
-        console.log(res);
         console.log('[API] => 사용자 전체 목록을 불러올 수 없습니다.');
       }
     }
@@ -174,7 +173,7 @@ function readExcel(event) {
                 publishedDate: new Date(),
               },
               (res) => {
-                if (res.msg == 'OK' && index + 1 == rows.length) {
+                if (index + 1 == rows.length) {
                   onloadUserTable();
                   loadingPopup.style.display = 'none';
                 }
@@ -183,6 +182,7 @@ function readExcel(event) {
           });
         } catch (error) {
           alert('오류가 발생하였습니다.');
+          loadingPopup.style.display = 'none';
         }
       }
     });

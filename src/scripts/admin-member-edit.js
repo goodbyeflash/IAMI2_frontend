@@ -28,12 +28,6 @@ window.onload = () => {
               return;
             }
 
-            idEl.onkeydown = (e) => {
-              if (e.code == 'Space') {
-                return;
-              }
-            };
-
             passwordEl.onkeydown = (e) => {
               if (e.code == 'Space') {
                 return;

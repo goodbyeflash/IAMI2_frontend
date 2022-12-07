@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>관리자 페이지</title>
 </head>
-<body>
+<body style="display: none;">
 <div id="wrap">
   <header>
     <div class="header-top">
@@ -36,20 +36,16 @@
 
         <div class="file">
           <input type="file" id="fileUpload" class="form-file">
-          <span class="file-name">선택된 파일 없음</span>
+          <!-- <span class="file-name">선택된 파일 없음</span> -->
           <label for="fileUpload" class="btn btn-file">파일첨부</label>
         </div>
 
         <div class="search">
           <div class="form form-search">
             <select id="findSelect" name="" class="form-select">
-              <option value="name">성명</option>
-              <option value="id">회원아이디</option>
-              <option value="type">권한</option>
-              <option value="email">E-Mail</option>
-              <option value="hp">휴대전화번호</option>1
-              <option value="publishedDate">가입일시</option>
-              <option value="ip">IP</option>
+              <option value="learningNo">학습세트넘버</option>
+              <option value="videoName">비디오 이름</option>
+              <option value="videoUrl">비디오 링크</option>
             </select>
             <input id="findText" type="text" class="form-input" placeholder="검색어를 입력하세요." title="검색어 입력" style="padding: 5px; margin: 0; border: 1px solid #c9c9c9; border-radius: 0; font-size: 1.3rem; line-height: 1; background-color: transparent; -webkit-box-sizing: border-box; box-sizing: border-box; vertical-align: middle; width: 300px; height: 33px;">
             <button id="findBtn" type="button" class="btn btn-primary">검색</button>
@@ -63,7 +59,7 @@
           <table class="tb full">
             <thead>
             <tr>
-              <th>학습넘버</th>
+              <th>학습세트넘버</th>
               <th>비디오 이름</th>
               <th>비디오 링크</th>
               <th>퀴즈넘버</th>
@@ -72,7 +68,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <!-- <tr>
               <td>1</td>
               <td>비디오이름</td>
               <td>링크</td>
@@ -82,7 +78,7 @@
                 <a href="admin-learningSet-edit.html" class="btn btn-primary">수정</a>
                 <a href="javascript: void(0);" class="btn btn-cancel">삭제</a>
               </td>
-            </tr>
+            </tr> -->
             </tbody>
           </table>
         </div>

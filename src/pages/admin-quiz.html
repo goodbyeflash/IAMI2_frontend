@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>관리자 페이지</title>
 </head>
-<body>
+<body style="display: none;">
 <div id="wrap">
   <header>
     <div class="header-top">
@@ -20,8 +20,8 @@
           <li class="dep01"><a href="admin-member.html">회원정보</a></li>
           <li class="dep01"><a href="admin-learningSet.html">학습세트</a></li>
           <li class="dep01"><a href="admin-learningInfo.html">학습정보</a></li>
-          <li class="dep01"><a href="admin-learningResult.html">학습결과</a></li>
           <li class="dep01"><a href="admin-quiz.html" class="current">퀴즈데이터</a></li>
+          <li class="dep01"><a href="admin-learningResult.html">학습결과</a></li>
           <li class="dep01"><a href="admin-memo.html">메모</a></li>
         </ul>
       </nav>
@@ -36,20 +36,18 @@
 
         <div class="file">
           <input type="file" id="fileUpload" class="form-file">
-          <span class="file-name">선택된 파일 없음</span>
+          <!-- <span class="file-name">선택된 파일 없음</span> -->
           <label for="fileUpload" class="btn btn-file">파일첨부</label>
         </div>
 
         <div class="search">
           <div class="form form-search">
             <select id="findSelect" name="" class="form-select">
-              <option value="name">성명</option>
-              <option value="id">회원아이디</option>
-              <option value="type">권한</option>
-              <option value="email">E-Mail</option>
-              <option value="hp">휴대전화번호</option>1
-              <option value="publishedDate">가입일시</option>
-              <option value="ip">IP</option>
+              <option value="quizNo">퀴즈넘버</option>
+              <option value="text">문구</option>
+              <option value="question">문제</option>
+              <option value="answer">정답</option>
+              <option value="time">제한시간</option>
             </select>
             <input id="findText" type="text" class="form-input" placeholder="검색어를 입력하세요." title="검색어 입력" style="padding: 5px; margin: 0; border: 1px solid #c9c9c9; border-radius: 0; font-size: 1.3rem; line-height: 1; background-color: transparent; -webkit-box-sizing: border-box; box-sizing: border-box; vertical-align: middle; width: 300px; height: 33px;">
             <button id="findBtn" type="button" class="btn btn-primary">검색</button>
@@ -64,16 +62,16 @@
             <thead>
             <tr>
               <th>퀴즈넘버</th>
-              <th>퀴즈문구</th>
-              <th>퀴즈문제</th>
-              <th>퀴즈정답</th>
-              <th>제한시간</th>
+              <th>문구</th>
+              <th>문제</th>
+              <th>정답</th>
+              <th>시간</th>
               <th>등록날짜</th>
               <th>관리</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <!-- <tr>
               <td>1</td>
               <td>문구</td>
               <td>문제</td>
@@ -84,7 +82,7 @@
                 <a href="admin-quiz-edit.html" class="btn btn-primary">수정</a>
                 <a href="javascript: void(0);" class="btn btn-cancel">삭제</a>
               </td>
-            </tr>
+            </tr> -->
             </tbody>
           </table>
         </div>
@@ -101,6 +99,10 @@
         </div> -->
       </div>
     </div>
+  </div>
+  <div class="loading-popup">
+    <div class="dim"></div>
+    <div class="loading"></div>
   </div>
 </div>
 </body>

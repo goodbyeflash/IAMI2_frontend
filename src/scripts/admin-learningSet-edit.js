@@ -43,6 +43,7 @@ window.onload = () => {
 
             quizNoEl.onkeydown = (e) => {
               if (e.code == 'Space') {
+                e.preventDefault();
                 return;
               }
             };
@@ -61,7 +62,6 @@ window.onload = () => {
                   if (res.msg == 'OK') {
                     history.back();
                   } else {
-                    console.log(res);
                     alert('오류가 발생하였습니다.');
                   }
                 }

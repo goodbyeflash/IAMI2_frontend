@@ -8,7 +8,7 @@ let pageCount = 1;
 let lastPageNum = 0;
 let type = 'all';
 let data = {};
-let teacherItems;
+let learningSetItems;
 const loadingPopup = document.getElementsByClassName('loading-popup')[0];
 
 window.onload = () => {
@@ -98,9 +98,9 @@ function onloadLearningSetTable() {
     if (res) {
       if (res.msg && res.msg == 'OK') {
         lastPageNum = res.result.headers['last-page'];
-        teacherItems = res.result.data;
+        learningSetItems = res.result.data;
         table.innerHTML = '';
-        teacherItems.forEach((item, index) => {
+        learningSetItems.forEach((item, index) => {
           table.innerHTML += `<tr>
             <td>${item.learningNo}</td>
             <td>${item.videoName}</td>
@@ -118,7 +118,7 @@ function onloadLearningSetTable() {
             </tr>`;
         });
 
-        for (let index = 0; index < teacherItems.length; index++) {
+        for (let index = 0; index < learningSetItems.length; index++) {
           document.getElementById(`update_${index}`).onclick = (e) => {
             location.href = `admin-learningSet-edit.html?_id=${e.target.getAttribute(
               'data-val'
@@ -126,12 +126,12 @@ function onloadLearningSetTable() {
           };
         }
 
-        for (let index = 0; index < teacherItems.length; index++) {
+        for (let index = 0; index < learningSetItems.length; index++) {
           document.getElementById(`delete_${index}`).onclick = (e) => {
             if (window.confirm('정말 삭제 하시겠습니까?')) {
               api(
                 'delete',
-                `users/${e.target.getAttribute('data-val')}`,
+                `learningSet/${e.target.getAttribute('data-val')}`,
                 undefined,
                 (res) => {
                   if (res.msg && res.msg == 'ERROR') {

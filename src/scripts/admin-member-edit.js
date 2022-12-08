@@ -30,6 +30,7 @@ window.onload = () => {
 
             passwordEl.onkeydown = (e) => {
               if (e.code == 'Space') {
+                e.preventDefault();
                 return;
               }
             };

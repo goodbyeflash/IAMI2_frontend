@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>관리자 페이지</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
-<body>
+<body style="display: none;">
 <div id="wrap">
   <header>
     <div class="header-top">
@@ -37,19 +40,9 @@
         <div class="search">
 
           <div class="form form-search">
-            <div class="form-date">
-              <input type="text" id="sdate" class="datePicker">
-              <span class="date-dashed">-</span>
-              <input type="text" id="edate" class="datePicker">
-            </div>
             <select id="findSelect" name="" class="form-select">
-              <option value="name">성명</option>
-              <option value="id">회원아이디</option>
-              <option value="type">권한</option>
-              <option value="email">E-Mail</option>
-              <option value="hp">휴대전화번호</option>1
-              <option value="publishedDate">가입일시</option>
-              <option value="ip">IP</option>
+              <option value="userId">회원아이디</option>
+              <option value="learningNo">학습세트넘버</option>
             </select>
             <input id="findText" type="text" class="form-input" placeholder="검색어를 입력하세요." title="검색어 입력" style="padding: 5px; margin: 0; border: 1px solid #c9c9c9; border-radius: 0; font-size: 1.3rem; line-height: 1; background-color: transparent; -webkit-box-sizing: border-box; box-sizing: border-box; vertical-align: middle; width: 300px; height: 33px;">
             <button id="findBtn" type="button" class="btn btn-primary">검색</button>
@@ -59,6 +52,11 @@
       </div>
 
       <div class="btn-wrap rt">
+        <div class="form-date">
+          <input type="text" id="sdate" class="datePicker">
+          <span class="date-dashed">-</span>
+          <input type="text" id="edate" class="datePicker">
+        </div>
         <button type="button" class="btn btn-excel">엑셀다운</button>
       </div>
 
@@ -68,20 +66,21 @@
             <thead>
             <tr>
               <th>회원아이디</th>
-              <th>학습넘버</th>
-              <th>실행시간</th>
+              <th>학습세트넘버</th>
+              <th>학습시간</th>
               <th>비디오시청시간</th>
               <th>평균점수</th>
               <th>평균풀이시간</th>
-              <th>틀린번호</th>
-              <th>총점수</th>
+              <th>틀린문제</th>
+              <th>총 점수</th>
               <th>리플레이 평균시간</th>
               <th>리플레이 풀이시간</th>
               <th>등록날짜</th>
+              <th>리플레이 등록날짜</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <!-- <tr>
               <td>test1</td>
               <td>1</td>
               <td>1</td>
@@ -93,7 +92,7 @@
               <td>1</td>
               <td>1</td>
               <td>2022-12-04</td>
-            </tr>
+            </tr> -->
             </tbody>
           </table>
         </div>
@@ -110,6 +109,10 @@
         </div> -->
       </div>
     </div>
+  </div>
+  <div class="loading-popup">
+    <div class="dim"></div>
+    <div class="loading"></div>
   </div>
 </div>
 </body>

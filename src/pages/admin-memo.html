@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>관리자 페이지</title>
 </head>
-<body>
+<body style="display: none;">
 <div id="wrap">
   <header>
     <div class="header-top">
@@ -37,13 +37,8 @@
         <div class="search">
           <div class="form form-search">
             <select id="findSelect" name="" class="form-select">
-              <option value="name">성명</option>
-              <option value="id">회원아이디</option>
-              <option value="type">권한</option>
-              <option value="email">E-Mail</option>
-              <option value="hp">휴대전화번호</option>1
-              <option value="publishedDate">가입일시</option>
-              <option value="ip">IP</option>
+              <option value="userId">회원아이디</option>
+              <option value="text">내용</option>
             </select>
             <input id="findText" type="text" class="form-input" placeholder="검색어를 입력하세요." title="검색어 입력" style="padding: 5px; margin: 0; border: 1px solid #c9c9c9; border-radius: 0; font-size: 1.3rem; line-height: 1; background-color: transparent; -webkit-box-sizing: border-box; box-sizing: border-box; vertical-align: middle; width: 300px; height: 33px;">
             <button id="findBtn" type="button" class="btn btn-primary">검색</button>
@@ -63,11 +58,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <!-- <tr>
               <td>test1</td>
               <td>차상빈</td>
               <td>2022-12-04</td>
-            </tr>
+            </tr> -->
             </tbody>
           </table>
         </div>

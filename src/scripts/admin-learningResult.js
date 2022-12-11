@@ -131,7 +131,7 @@ function onloadLearningResultTable() {
             <td>${item.videoRunTime}</td>
             <td>${item.quizAvg}</td>
             <td>${item.quizAvgRunTime}</td>
-            <td>${item.quizIncorrectNumber}</td>
+            <td>${item.quizIncorrectQuizNo}</td>
             <td>${item.quizTotalScore}</td>
             <td>${new Date(item.publishedDate).YYYYMMDDHHMMSS()}</td>
             <td>${item.replayAvg ? item.replayAvg : 'X'}</td>

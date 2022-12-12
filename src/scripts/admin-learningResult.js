@@ -127,15 +127,21 @@ function onloadLearningResultTable() {
           table.innerHTML += `<tr>
             <td>${item.userId}</td>
             <td>${item.learningNo}</td>
-            <td>${item.learningTime}</td>
-            <td>${item.videoRunTime}</td>
-            <td>${item.quizAvg}</td>
-            <td>${item.quizAvgRunTime}</td>
+            <td>${padText(Math.round(item.learningTime.toFixed(1)))}</td>
+            <td>${padText(Math.round(item.videoRunTime.toFixed(1)))}</td>
+            <td>${Math.ceil(item.quizAvg)}점</td>
+            <td>${item.quizAvgRunTime.toFixed(1)}초</td>
             <td>${item.quizIncorrectQuizNo}</td>
             <td>${item.quizTotalScore}</td>
             <td>${new Date(item.publishedDate).YYYYMMDDHHMMSS()}</td>
-            <td>${item.replayAvg ? item.replayAvg : 'X'}</td>
-            <td>${item.replayAvgRunTime ? item.replayAvgRunTime : 'X'}</td>
+            <td>${
+              item.replayAvg >= 0 ? `${Math.ceil(item.replayAvg)}점` : 'X'
+            }</td>
+            <td>${
+              item.replayAvgRunTime >= 0
+                ? `${item.replayAvgRunTime.toFixed(1)}초`
+                : 'X'
+            }</td>
             <td>${
               item.replayPublishedDate
                 ? new Date(item.replayPublishedDate).YYYYMMDDHHMMSS()
@@ -171,3 +177,16 @@ Date.prototype.YYYYMMDDHHMMSS = function () {
 
   return `${yyyy}-${MM}-${dd} ${hh}:${mm}:${ss}`;
 };
+
+function padText(seconds) {
+  var pad = function (num) {
+    var str = num < 10 ? '0' + num : num;
+
+    return str;
+  };
+
+  var min = parseInt(seconds / 60);
+  var sec = pad(parseInt(seconds % 60));
+
+  return min + ':' + sec;
+}

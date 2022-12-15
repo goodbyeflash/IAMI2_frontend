@@ -104,13 +104,20 @@ window.onload = () => {
                   if (res.msg == 'OK') {
                     history.back();
                   } else {
-                    console.log(res);
                     alert('오류가 발생하였습니다.');
                   }
                 }
               );
             };
           }
+          document.getElementById('logout').onclick = () => {
+            api('post', 'teachers/logout', {}, (res) => {
+              if (res.msg && res.msg == 'OK') {
+                alert('로그아웃 되었습니다.');
+                location.href = 'admin.html';
+              }
+            });
+          };
           document.getElementsByTagName('body')[0].style.display = 'block';
         });
       }

@@ -9,6 +9,7 @@ window.onload = () => {
       if (res.result.data && res.result.data.id) {
         location.href = 'admin-member.html';
       } else {
+        document.getElementById('userId').setAttribute('type', 'text');
         document.getElementsByTagName('body')[0].style.display = 'block';
         document.getElementsByClassName('btn btn-primary')[0].onclick = () => {
           api(

@@ -56,6 +56,15 @@ window.onload = () => {
         onloadMemoTable();
       };
 
+      document.getElementById('logout').onclick = () => {
+        api('post', 'teachers/logout', {}, (res) => {
+          if (res.msg && res.msg == 'OK') {
+            alert('로그아웃 되었습니다.');
+            location.href = 'admin.html';
+          }
+        });
+      };
+
       document.getElementsByTagName('body')[0].style.display = 'block';
     }
   });

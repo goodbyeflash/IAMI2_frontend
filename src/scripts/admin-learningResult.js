@@ -88,6 +88,18 @@ window.onload = () => {
         );
       };
 
+      document.getElementById('logout').onclick = () => {
+        api('post', 'teachers/logout', {}, (res) => {
+          if (res.msg && res.msg == 'OK') {
+            alert('로그아웃 되었습니다.');
+            location.href = 'admin.html';
+          }
+        });
+      };
+
+      document.getElementById('sdate').setAttribute('type', 'text');
+      document.getElementById('edate').setAttribute('type', 'text');
+
       document.getElementsByTagName('body')[0].style.display = 'block';
     }
   });

@@ -182,9 +182,11 @@ function readExcel(event) {
                 publishedDate: new Date(),
               },
               (res) => {
-                if (index + 1 == rows.length) {
-                  onloadUserTable();
-                  loadingPopup.style.display = 'none';
+                if (res.msg && res.msg == 'OK') {
+                  if (index + 1 == rows.length) {
+                    onloadUserTable();
+                    loadingPopup.style.display = 'none';
+                  }
                 }
               }
             );

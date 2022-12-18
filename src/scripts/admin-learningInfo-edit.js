@@ -102,7 +102,7 @@ window.onload = () => {
                 },
                 (res) => {
                   if (res.msg == 'OK') {
-                    history.back();
+                    location.href = 'admin-learningInfo.html';
                   } else {
                     alert('오류가 발생하였습니다.');
                   }

@@ -135,8 +135,12 @@ function learningDataParsing(data) {
 
 function sendLearningDataParsing(data) {
   var retData = [];
-  data.split(',').forEach((no) => {
-    retData.push({ learningNo: no, complete: 'N' });
-  });
+  if (data.indexOf(',') > -1) {
+    data.split(',').forEach((no) => {
+      retData.push({ learningNo: no, complete: 'N', videoComplete: 'N' });
+    });
+  } else {
+    retData.push({ learningNo: data, complete: 'N', videoComplete: 'N' });
+  }
   return retData;
 }

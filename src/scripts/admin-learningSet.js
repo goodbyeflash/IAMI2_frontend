@@ -113,8 +113,21 @@ function onloadLearningSetTable() {
           table.innerHTML += `<tr>
             <td>${item.learningNo}</td>
             <td>${item.videoName}</td>
-            <td>${item.videoUrl}</td>
-            <td>${item.quizNo}</td>
+            <td>
+            <a href=${item.videoUrl} target='_blank'>${
+            item.videoUrl.length > 30
+              ? item.videoUrl.substring(0, 30) + '...'
+              : item.videoUrl
+          }</a>
+            </td>
+            <td>
+            ${
+              item.quizNo.join(',').length > 50
+                ? item.quizNo.join(',').slice(0, 50) +
+                  '\n' +
+                  item.quizNo.join(',').slice(50, item.quizNo.join(',').length)
+                : item.quizNo
+            }</td>
             <td>${new Date(item.publishedDate).YYYYMMDDHHMMSS()}</td>
             <td>
                 <span href="admin-learningSet-edit.html" id="update_${index}" data-val="${
@@ -181,18 +194,16 @@ function readExcel(event) {
               'post',
               `learningSet/register`,
               {
-                learningNo: row.learningNo.toString(),
+                learningNo: row.learningNo,
                 videoName: row.videoName,
                 videoUrl: row.videoUrl,
                 quizNo: row.quizNo.split(','),
                 publishedDate: new Date(),
               },
-              (res) => {
-                if (res.msg && res.msg == 'OK') {
-                  if (index + 1 == rows.length) {
-                    onloadLearningSetTable();
-                    loadingPopup.style.display = 'none';
-                  }
+              () => {
+                if (index + 1 == rows.length) {
+                  onloadLearningSetTable();
+                  loadingPopup.style.display = 'none';
                 }
               }
             );

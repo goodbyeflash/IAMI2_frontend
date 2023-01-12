@@ -114,14 +114,19 @@ function onloadLearningInfoTable() {
             <td>${item.learningDate}</td>
             <td>${item.learningTime}</td>
             <td>${item.userId}</td>
-            <td>${item.teacherImgUrl}</td>
+            <td> <a href=${item.teacherImgUrl} target='_blank'>${
+              item.teacherImgUrl.length > 30
+                ? item.teacherImgUrl.substring(0, 30) + '...'
+                : item.teacherImgUrl
+            }</a></td>
             <td>${item.learningText}</td>
             <td>${learningDataParsing(item.learningData)}</td>
+            <td>${learningDataVideoCompleteParsing(item.learningData)}</td>
             <td>${new Date(item.publishedDate).YYYYMMDDHHMMSS()}</td>
             <td>
                 <span href="admin-learningInfo-edit.html" id="update_${index}" data-val="${
             item._id
-          }" class="btn btn-primary">수정</span>
+          }" class="btn btn-primary">수정</span><br />
                 <span href="javascript: void(0);" id="delete_${index}" data-val="${
             item._id
           }" class="btn btn-cancel">삭제</span>
@@ -144,7 +149,7 @@ function onloadLearningInfoTable() {
                 'delete',
                 `learningInfo/${e.target.getAttribute('data-val')}`,
                 undefined,
-                (res) => {
+                () => {
                   if (res.msg && res.msg == 'ERROR') {
                     alert('오류가 발생하였습니다.');
                     return;
@@ -175,11 +180,23 @@ function learningDataParsing(data) {
   return retData;
 }
 
+function learningDataVideoCompleteParsing(data) {
+  var retData = [];
+  data.forEach((item) => {
+    retData.push(item.videoComplete ? item.videoComplete : 'N');
+  });
+  return retData;
+}
+
 function sendLearningDataParsing(data) {
   var retData = [];
-  data.split(',').forEach((no) => {
-    retData.push({ learningNo: no, complete: 'N' });
-  });
+  if (data.indexOf(',') > -1) {
+    data.split(',').forEach((no) => {
+      retData.push({ learningNo: no, complete: 'N', videoComplete: 'N' });
+    });
+  } else {
+    retData.push({ learningNo: data, complete: 'N', videoComplete: 'N' });
+  }
   return retData;
 }
 
@@ -207,12 +224,10 @@ function readExcel(event) {
                 learningData: sendLearningDataParsing(row.learningData),
                 publishedDate: new Date(),
               },
-              (res) => {
-                if (res.msg && res.msg == 'OK') {
-                  if (index + 1 == rows.length) {
-                    onloadLearningInfoTable();
-                    loadingPopup.style.display = 'none';
-                  }
+              () => {
+                if (index + 1 == rows.length) {
+                  onloadLearningInfoTable();
+                  loadingPopup.style.display = 'none';
                 }
               }
             );
@@ -243,5 +258,5 @@ Date.prototype.YYYYMMDDHHMMSS = function () {
   var mm = pad(this.getMinutes(), 2);
   var ss = pad(this.getSeconds(), 2);
 
-  return `${yyyy}-${MM}-${dd} ${hh}:${mm}:${ss}`;
+  return `${yyyy}-${MM}-${dd}<br/>${hh}:${mm}:${ss}`;
 };

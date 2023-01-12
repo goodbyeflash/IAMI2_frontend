@@ -139,8 +139,15 @@ function onloadLearningResultTable() {
           table.innerHTML += `<tr>
             <td>${item.userId}</td>
             <td>${item.learningNo}</td>
-            <td>${padText(Math.round(item.learningTime.toFixed(1)))}</td>
+            <td>${padText(
+              Math.round(item.learningTime.toFixed(1))
+            )}</td>            
             <td>${padText(Math.round(item.videoRunTime.toFixed(1)))}</td>
+            <td>${
+              item.videoPercentage &&
+              Math.round(item.videoPercentage.toFixed(1))
+            }%</td>
+            <td>${item.videoComplete && item.videoComplete}</td>
             <td>${Math.ceil(item.quizAvg)}점</td>
             <td>${item.quizAvgRunTime.toFixed(1)}초</td>
             <td>${item.quizIncorrectQuizNo}</td>

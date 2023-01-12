@@ -179,7 +179,7 @@ function readExcel(event) {
               'post',
               `quizData/register`,
               {
-                quizNo: row.quizNo.toString(),
+                quizNo: row.quizNo,
                 text: row.text,
                 question: row.question,
                 answer: row.answer.toString(),
@@ -187,11 +187,9 @@ function readExcel(event) {
                 publishedDate: new Date(),
               },
               (res) => {
-                if (res.msg && res.msg == 'OK') {
-                  if (index + 1 == rows.length) {
-                    onloadQuizDataTable();
-                    loadingPopup.style.display = 'none';
-                  }
+                if (index + 1 == rows.length) {
+                  onloadQuizDataTable();
+                  loadingPopup.style.display = 'none';
                 }
               }
             );
